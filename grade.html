@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading System</title>
+</head>
+
+<body>
+    <script>
+        // Get student name
+        let studentName = prompt("Enter student's name:");
+
+        // Get marks for 5 subjects
+        let sub1 = parseFloat(prompt("Enter marks for Subject 1:"));
+        let sub2 = parseFloat(prompt("Enter marks for Subject 2:"));
+        let sub3 = parseFloat(prompt("Enter marks for Subject 3:"));
+        let sub4 = parseFloat(prompt("Enter marks for Subject 4:"));
+        let sub5 = parseFloat(prompt("Enter marks for Subject 5:"));
+
+        // Calculate total and average
+        let total = sub1 + sub2 + sub3 + sub4 + sub5;
+        let average = total / 5;
+
+        // Determine grade
+        let grade;
+        if (average >= 90) {
+            grade = "A";
+        } else if (average >= 80) {
+            grade = "B";
+        } else if (average >= 70) {
+            grade = "C";
+        } else if (average >= 60) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+
+        // Output result
+        console.log(`\nStudent Name: ${studentName}`);
+        console.log(`Subject 1: ${sub1}`);
+        console.log(`Subject 2: ${sub2}`);
+        console.log(`Subject 3: ${sub3}`);
+        console.log(`Subject 4: ${sub4}`);
+        console.log(`Subject 5: ${sub5}`);
+        console.log(`Total Marks: ${total}`);
+        console.log(`Average: ${average.toFixed(2)}`);
+        console.log(`Grade: ${grade}`);
+
+    </script>
+</body>
+
+</html>
