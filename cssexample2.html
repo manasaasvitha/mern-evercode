@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facts That Fascinate</title>
+    <style>
+        /* Grid Layout */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .fact-box {
+            background-color: white;
+            padding: 20px;
+            border-left: 6px solid #2b7a78;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            transition: transform 0.2s;
+        }
+
+        .fact-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-box.alt {
+            border-left-color: #f4a261;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🧠 Facts That Fascinate</h1>
+        <p>Mind-blowing truths from science, nature, and beyond.</p>
+    </header>
+
+    <section class="grid-layout">
+        <div class="fact-box">
+            💡Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000
+            years old — and still edible.
+        </div>
+        <div class="fact-box alt">
+            💡Octopuses have three hearts and blue blood.
+        </div>
+        <div class="fact-box">
+            💡Bananas are berries, but strawberries aren’t.
+        </div>
+        <div class="fact-box alt">
+            💡A day on Venus is longer than its year.
+        </div>
+        <div class="fact-box">
+            💡Water can boil and freeze at the same time — it's called the triple point.
+        </div>
+        <div class="fact-box alt">
+            💡 Wombat poop is cube-shaped to keep it from rolling away.
+        </div>
+    </section>
+</body>
+
+</html>
