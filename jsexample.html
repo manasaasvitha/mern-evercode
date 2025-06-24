@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+        //continue
+
+        for (let i = 1; i <= 20; i++) {
+            if (i % 2 === 0) {
+                continue; // Skip even numbers
+            }
+            console.log(i); 
+        }
+        */
+
+        //while loop
+        let num = parseInt(prompt("Enter a number (negative number to stop):"));
+
+        while (num >= 0) {
+            console.log("You entered:", num);
+            num = parseInt(prompt("Enter another number (negative to stop):"));
+        }
+
+        console.log("You entered a negative number. Program stopped.");
+
+
+        /*
+        //Multiplication Table
+        const tableNum = parseInt(prompt("Enter the table number:"));
+        const start = parseInt(prompt("Enter the start point:"));
+        const end = parseInt(prompt("Enter the end point:"));
+
+        console.log(`Multiplication Table of ${tableNum} from ${start} to ${end}:`);
+
+        for (let i = start; i <= end; i++) {
+            console.log(`${tableNum} x ${i} = ${tableNum * i}`);
+        }
+        */
+
+    </script>
+</body>
+
+</html>
