@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>Shopping List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .form-control {
+      margin-bottom: 10px;
+    }
+
+    .form-input,
+    .form-input-filter {
+      width: 20%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+
+    .items li {
+      width: 20%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8f8f8;
+      padding: 10px 15px;
+      margin: 8px 0;
+      border-radius: 6px;
+      font-size: 16px;
+      color: #333;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    .items li:hover {
+      background-color: #eaeaea;
+    }
+
+
+
+    .remove-item {
+      background: none;
+      border: none;
+      color: red;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .btn-clear {
+      width: 20%;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-clear:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <div class="container">
+      <header>
+        <h1>Shopping List</h1>
+      </header>
+
+      <form id="item-form">
+        <div class="form-control">
+          <input type="text" class="form-input" id="item-input" name="item" placeholder="Enter item" />
+        </div>
+        <br />
+        <div class="form-control">
+          <button type="submit" class="btn">
+            <i class="fa-solid fa-plus"></i> Add Item
+          </button>
+        </div>
+      </form>
+
+      <br />
+
+      <div class="filter">
+        <input type="text" class="form-input-filter" id="filter" placeholder="Enter Items" />
+      </div>
+
+      <ul id="item-list" class="items">
+        <li>
+          Banana
+          <button class="remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li>
+          Cherry
+          <button class="remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li>
+          Dates
+          <button class="remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+        <li>
+          Grapes
+          <button class="remove-item">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </li>
+      </ul>
+
+      <button id="clear" class="btn-clear">Clear all</button>
+    </div>
+  </center>
+
+  <script>
+    const form = document.getElementById("item-form");
+    const itemInput = document.getElementById("item-input");
+    const itemList = document.getElementById("item-list");
+    const clear = document.getElementById("clear");
+    const filter = document.getElementById("filter");
+
+    function addItem(event) {
+      event.preventDefault();
+
+      let newItem = itemInput.value.trim();
+      if (newItem === '') return;
+
+      const li = document.createElement('li');
+      li.appendChild(document.createTextNode(newItem));
+
+      const button = document.createElement('button');
+      button.className = 'remove-item';
+      const icon = document.createElement('i');
+      icon.className = 'fa-solid fa-xmark';
+
+      button.appendChild(icon);
+      li.appendChild(button);
+      itemList.appendChild(li);
+      itemInput.value = '';
+    }
+
+    function removeAllItems() {
+      while (itemList.firstChild) {
+        itemList.removeChild(itemList.firstChild);
+      }
+    }
+
+    function removeItems(event) {
+      if (event.target.closest('.remove-item')) {
+        const li = event.target.closest('li');
+        li.remove();
+      }
+    }
+
+    function filterItems(event) {
+      let text = event.target.value.toLowerCase();
+      const items = document.querySelectorAll('#item-list li');
+
+      items.forEach((item) => {
+        const itemname = item.firstChild.textContent.trim().toLowerCase();
+        if (itemname.indexOf(text) !== -1) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    form.addEventListener('submit', addItem);
+    clear.addEventListener('click', removeAllItems);
+    itemList.addEventListener('click', removeItems);
+    filter.addEventListener('input', filterItems);
+  </script>
+</body>
+
+</html>
